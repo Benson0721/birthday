@@ -1,0 +1,18 @@
+[
+  {
+    "phase": "opening",
+    "milliseconds": 3
+  },
+  {
+    "phase": "extracting",
+    "milliseconds": 643
+  },
+  {
+    "phase": "expanding",
+    "milliseconds": 1431
+  },
+  {
+    "phase": "expanded",
+    "milliseconds": 2216
+  }
+]

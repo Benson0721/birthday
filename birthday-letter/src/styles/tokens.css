@@ -1,0 +1,23 @@
+:root {
+  --color-bg: #ede2f1;
+  --color-lavender: #dccdf0;
+  --color-paper: #fff9f2;
+  --color-paper-edge: #d8ccdf;
+  --color-envelope: #dccdf0;
+  --color-envelope-fold: #c8b6dd;
+  --color-accent: #d8b2c1;
+  --color-accent-deep: #97758c;
+  --color-text: #6e5651;
+  --color-muted: #826d78;
+  --color-line: #cfc5d6;
+  --color-moon: #f6e58b;
+  --color-soft-card: #f1e9f4;
+  --shadow-envelope: 0 22px 48px rgb(104 81 119 / 16%);
+  --shadow-paper: 0 22px 65px rgb(104 81 119 / 14%), 0 2px 7px rgb(104 81 119 / 6%);
+  --font-body: 'Noto Sans TC Variable', 'Noto Sans TC', 'Microsoft JhengHei', system-ui, sans-serif;
+  --font-heading: 'Noto Serif TC Variable', 'Noto Serif TC', 'PMingLiU', serif;
+  --color-button: #805c6e;
+  --paper-width: min(680px, 90vw);
+  --paper-height: min(82dvh, 850px);
+  --ease-paper: cubic-bezier(.22, .61, .36, 1);
+}

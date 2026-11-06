@@ -1,0 +1,42 @@
+[
+  {
+    "name": "desktop",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "returnedFrom": "back",
+    "errors": [],
+    "phase": "floating"
+  },
+  {
+    "name": "mobile",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "returnedFrom": "front",
+    "errors": [],
+    "phase": "floating"
+  },
+  {
+    "name": "small-mobile",
+    "viewport": {
+      "width": 320,
+      "height": 568
+    },
+    "returnedFrom": "front",
+    "errors": [],
+    "phase": "floating"
+  },
+  {
+    "name": "webkit-mobile",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "returnedFrom": "front",
+    "errors": [],
+    "phase": "floating"
+  }
+]

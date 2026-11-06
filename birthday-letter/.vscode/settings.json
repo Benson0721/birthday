@@ -1,0 +1,8 @@
+{
+  "files.encoding": "utf8",
+  "files.eol": "\n",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "terminal.integrated.env.windows": {
+    "NODE_USE_SYSTEM_CA": "1"
+  }
+}

@@ -1,0 +1,164 @@
+[
+  {
+    "name": "desktop",
+    "viewport": {
+      "width": 1440,
+      "height": 1100
+    },
+    "images": [
+      {
+        "file": "lavender.png",
+        "width": 1254,
+        "height": 1254,
+        "transparent": 1105371,
+        "visible": 467145
+      },
+      {
+        "file": "happy-duck.png",
+        "width": 1254,
+        "height": 1254,
+        "transparent": 882272,
+        "visible": 690244
+      },
+      {
+        "file": "frog.png",
+        "width": 1254,
+        "height": 1254,
+        "transparent": 1049368,
+        "visible": 523148
+      },
+      {
+        "file": "spicy-shrimp.png",
+        "width": 1254,
+        "height": 1254,
+        "transparent": 610294,
+        "visible": 962222
+      },
+      {
+        "file": "chocolate-cake.png",
+        "width": 1254,
+        "height": 1254,
+        "transparent": 756694,
+        "visible": 815822
+      },
+      {
+        "file": "steam-emblem.png",
+        "width": 1254,
+        "height": 1254,
+        "transparent": 590422,
+        "visible": 982094
+      }
+    ],
+    "errors": [],
+    "toneSwitches": true,
+    "downloads": "PNG and ZIP verified"
+  },
+  {
+    "name": "mobile",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "images": [
+      {
+        "file": "lavender.png",
+        "width": 1254,
+        "height": 1254,
+        "transparent": 1105371,
+        "visible": 467145
+      },
+      {
+        "file": "happy-duck.png",
+        "width": 1254,
+        "height": 1254,
+        "transparent": 882272,
+        "visible": 690244
+      },
+      {
+        "file": "frog.png",
+        "width": 1254,
+        "height": 1254,
+        "transparent": 1049368,
+        "visible": 523148
+      },
+      {
+        "file": "spicy-shrimp.png",
+        "width": 1254,
+        "height": 1254,
+        "transparent": 610294,
+        "visible": 962222
+      },
+      {
+        "file": "chocolate-cake.png",
+        "width": 1254,
+        "height": 1254,
+        "transparent": 756694,
+        "visible": 815822
+      },
+      {
+        "file": "steam-emblem.png",
+        "width": 1254,
+        "height": 1254,
+        "transparent": 590422,
+        "visible": 982094
+      }
+    ],
+    "errors": [],
+    "toneSwitches": true,
+    "downloads": "not repeated"
+  },
+  {
+    "name": "webkit-mobile",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "images": [
+      {
+        "file": "lavender.png",
+        "width": 1254,
+        "height": 1254,
+        "transparent": 1105371,
+        "visible": 467145
+      },
+      {
+        "file": "happy-duck.png",
+        "width": 1254,
+        "height": 1254,
+        "transparent": 882272,
+        "visible": 690244
+      },
+      {
+        "file": "frog.png",
+        "width": 1254,
+        "height": 1254,
+        "transparent": 1049368,
+        "visible": 523148
+      },
+      {
+        "file": "spicy-shrimp.png",
+        "width": 1254,
+        "height": 1254,
+        "transparent": 610294,
+        "visible": 962222
+      },
+      {
+        "file": "chocolate-cake.png",
+        "width": 1254,
+        "height": 1254,
+        "transparent": 756694,
+        "visible": 815822
+      },
+      {
+        "file": "steam-emblem.png",
+        "width": 1254,
+        "height": 1254,
+        "transparent": 590422,
+        "visible": 982094
+      }
+    ],
+    "errors": [],
+    "toneSwitches": true,
+    "downloads": "not repeated"
+  }
+]

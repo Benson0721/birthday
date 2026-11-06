@@ -1,0 +1,42 @@
+{
+  "name": "birthday-letter",
+  "private": true,
+  "version": "0.1.0",
+  "description": "繁體中文生日信與三份禮物的純前端網站",
+  "type": "module",
+  "engines": {
+    "node": ">=24.16.0 <25",
+    "npm": ">=11 <12"
+  },
+  "packageManager": "npm@11.13.0",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5173 --strictPort",
+    "typecheck": "tsc -b --pretty false",
+    "build": "npm run typecheck && vite build",
+    "lint": "oxlint --deny-warnings",
+    "preview": "vite preview --host 127.0.0.1 --port 4173 --strictPort",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "npm run build && playwright test",
+    "test:e2e:ui": "npm run build && playwright test --ui",
+    "browsers:install": "playwright install chromium webkit",
+    "check": "npm run lint && npm run test && npm run test:e2e"
+  },
+  "dependencies": {
+    "@fontsource-variable/noto-sans-tc": "5.3.1",
+    "@fontsource-variable/noto-serif-tc": "5.3.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1",
+    "@types/node": "24.19.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.2.1",
+    "oxlint": "1.91.0",
+    "typescript": "7.0.2",
+    "vite": "8.3.5",
+    "vitest": "5.1.0"
+  }
+}

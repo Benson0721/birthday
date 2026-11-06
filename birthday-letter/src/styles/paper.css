@@ -1,0 +1,127 @@
+.reading-stage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.paper-scene {
+  width: var(--paper-width);
+  height: var(--paper-height);
+  position: relative;
+  perspective: 1800px;
+  outline: none;
+  cursor: grab;
+  touch-action: pan-y;
+}
+.paper-scene:focus-visible { outline: 3px solid #805c6e; outline-offset: 5px; }
+
+.paper-flipper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: transform var(--motion-flip) var(--ease-paper);
+  transform: rotateX(var(--paper-tilt, 0deg)) rotateY(var(--paper-angle, 0deg));
+}
+
+.paper-flipper[data-flipping='true'] { will-change: transform; }
+.paper-flipper[data-dragging='true'] { transition: none; will-change: transform; }
+.paper-flipper[data-dragging='true'], .paper-flipper[data-dragging='true'] * { cursor: grabbing !important; user-select: none; -webkit-user-select: none; }
+.paper-scroll p, .paper-scroll h1, .paper-scroll h2, .paper-scroll strong { cursor: text; }
+
+.paper-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 58px 58px 38px;
+  border-radius: 5px;
+  background-color: var(--color-paper);
+  background-image: linear-gradient(90deg, rgb(207 197 214 / 16%) 1px, transparent 1px), linear-gradient(rgb(207 197 214 / 16%) 1px, transparent 1px), url('/artwork/lavender-paper-wash.svg');
+  background-size: 24px 24px, 24px 24px, 100% 100%;
+  background-repeat: repeat, repeat, no-repeat;
+  border: 1px solid var(--color-paper-edge);
+  box-shadow: var(--shadow-paper);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(.5px);
+  overflow: clip;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+.paper-back { transform: rotateY(180deg) translateZ(.5px); }
+.paper-face > * { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+/* Explicit culling also covers the intermediate angles of a mouse drag. */
+.paper-flipper[data-visible-face='front'] .paper-back,
+.paper-flipper[data-visible-face='back'] .paper-front { visibility: hidden; }
+.paper-face[inert] { pointer-events: none; }
+.paper-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  outline-offset: -5px;
+}
+.paper-scroll::-webkit-scrollbar, .gift-detail-scroll::-webkit-scrollbar { display: none; }
+
+.letter-scroll { padding: 5px 0 8px; }
+.letter-heading { position: relative; flex-shrink: 0; }
+.letter-duck { position: absolute; right: 0; top: -12px; width: 118px; height: 118px; }
+.stationery-caption { margin: 0 0 16px; color: var(--color-muted); font-size: 13px; letter-spacing: .08em; }
+.letter-heading h1 { margin: 0 112px 14px 0; font-size: clamp(28px, 3vw, 36px); font-weight: 500; line-height: 1.5; letter-spacing: .04em; outline: none; }
+.letter-rule { display: flex; gap: 12px; align-items: center; margin-bottom: 16px; color: var(--color-accent-deep); font-size: 16px; }
+.letter-rule::before { content: ''; width: 46px; height: 1px; background: var(--color-paper-edge); }
+.letter-rule::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, var(--color-paper-edge), transparent); }
+.letter-paragraphs p { margin: 0 0 22px; font-size: 17px; line-height: 1.95; white-space: pre-line; overflow-wrap: anywhere; }
+.letter-paragraphs strong { font-weight: 600; color: #805e63; }
+.letter-closing { position: relative; flex-shrink: 0; min-height: 102px; padding-top: 12px; }
+.letter-friends { position: absolute; left: 0; bottom: 0; width: 155px; height: 95px; object-position: left bottom; }
+.letter-signature { margin: 0 0 10px 450px; font-family: var(--font-heading); font-size: 17px; }
+.letter-endmark { display: block; width: 40px; height: 40px; margin: 10px 18px 0 auto; opacity: .8; }
+
+.paper-return-button { position: absolute; z-index: 2; top: 8px; left: 8px; width: 44px; height: 44px; display: grid; place-items: center; padding: 0; border: 0; border-radius: 50%; background: radial-gradient(circle 16px, #fff9f2db 98%, transparent 100%); color: var(--color-text); }
+@media (hover: hover) { .paper-return-button:hover { background: radial-gradient(circle 18px, #fff9f2 98%, transparent 100%); } }
+.paper-return-button:focus-visible { outline-offset: 1px; }
+.return-envelope-icon { width: 20px; height: 20px; }
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root { --paper-width: min(90vw, 680px); --paper-height: min(86dvh, 820px); }
+}
+@media (max-width: 767px) {
+  :root { --paper-width: calc(100vw - 24px); --paper-height: calc(100dvh - 32px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); }
+  .paper-face { padding: 58px 32px 32px; }
+  .letter-duck { width: 90px; height: 94px; right: 0; top: -8px; }
+  .stationery-caption { max-width: calc(100% - 85px); font-size: 11px; letter-spacing: .02em; margin-bottom: 16px; }
+  .letter-heading h1 { margin-right: 78px; font-size: 28px; letter-spacing: .01em; }
+  .letter-paragraphs p { font-size: 16px; line-height: 1.95; }
+  .letter-closing { min-height: 90px; }
+  .letter-friends { width: 124px; height: 75px; }
+  .letter-signature { margin-left: 128px; font-size: 15px; }
+  .letter-endmark { width: 34px; height: 34px; margin-right: 12px; }
+}
+@media (max-height: 620px) {
+  .paper-face { padding-top: 50px; padding-bottom: 22px; }
+  .letter-heading h1 { margin-bottom: 6px; font-size: 27px; }
+  .stationery-caption { margin-bottom: 8px; }
+  .letter-rule { margin-bottom: 8px; }
+  .letter-duck { width: 76px; height: 76px; }
+  .letter-closing { min-height: 75px; padding-top: 4px; }
+  .letter-friends { width: 110px; height: 68px; }
+}
+@media (max-width: 350px) {
+  .letter-heading h1 { font-size: 24px; }
+  .letter-duck { width: 82px; height: 86px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .paper-flipper { transition: none; }
+}

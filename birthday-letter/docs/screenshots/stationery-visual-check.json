@@ -1,0 +1,106 @@
+[
+  {
+    "name": "desktop",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "assets": [
+      {
+        "name": "birthday-collection/happy-duck",
+        "width": 1254,
+        "height": 1254,
+        "transparent": 882272,
+        "partial": 689711,
+        "opaque": 533
+      },
+      {
+        "name": "puppy-kitten",
+        "width": 1752,
+        "height": 897,
+        "transparent": 469869,
+        "partial": 1101665,
+        "opaque": 10
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "mobile",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "assets": [
+      {
+        "name": "birthday-collection/happy-duck",
+        "width": 1254,
+        "height": 1254,
+        "transparent": 882272,
+        "partial": 689711,
+        "opaque": 533
+      },
+      {
+        "name": "puppy-kitten",
+        "width": 1752,
+        "height": 897,
+        "transparent": 469869,
+        "partial": 1101665,
+        "opaque": 10
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "small-mobile",
+    "viewport": {
+      "width": 320,
+      "height": 568
+    },
+    "assets": [
+      {
+        "name": "birthday-collection/happy-duck",
+        "width": 1254,
+        "height": 1254,
+        "transparent": 882272,
+        "partial": 689711,
+        "opaque": 533
+      },
+      {
+        "name": "puppy-kitten",
+        "width": 1752,
+        "height": 897,
+        "transparent": 469869,
+        "partial": 1101665,
+        "opaque": 10
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "webkit-mobile",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "assets": [
+      {
+        "name": "birthday-collection/happy-duck",
+        "width": 1254,
+        "height": 1254,
+        "transparent": 882272,
+        "partial": 689711,
+        "opaque": 533
+      },
+      {
+        "name": "puppy-kitten",
+        "width": 1752,
+        "height": 897,
+        "transparent": 469869,
+        "partial": 1101665,
+        "opaque": 10
+      }
+    ],
+    "errors": []
+  }
+]

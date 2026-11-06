@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="850" viewBox="0 0 680 850" preserveAspectRatio="none" fill="none">
+  <defs>
+    <filter id="soft-waterline" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".018 .024" numOctaves="3" seed="23" result="ripple"/>
+      <feDisplacementMap in="SourceGraphic" in2="ripple" scale="27" xChannelSelector="R" yChannelSelector="G"/>
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+    <filter id="paper-grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="3" stitchTiles="stitch" seed="9"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <mask id="paper-perimeter" maskUnits="userSpaceOnUse" x="0" y="0" width="680" height="850" style="mask-type:luminance">
+      <rect width="680" height="850" fill="white"/>
+      <rect x="38" y="45" width="604" height="760" rx="33" fill="black" filter="url(#soft-waterline)"/>
+    </mask>
+    <linearGradient id="lavender-wash" x1="0" y1="0" x2="680" y2="850" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B9A2CD"/>
+      <stop offset=".3" stop-color="#CEBAE0"/>
+      <stop offset=".61" stop-color="#DAC9E7"/>
+      <stop offset="1" stop-color="#BFA6D4"/>
+    </linearGradient>
+    <radialGradient id="pigment-bloom" cx="0" cy="0" r="1" gradientTransform="translate(20 580) scale(130 290)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B29AC9" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#B29AC9" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g mask="url(#paper-perimeter)">
+    <rect width="680" height="850" fill="url(#lavender-wash)" fill-opacity=".88"/>
+    <rect width="680" height="850" fill="url(#pigment-bloom)"/>
+    <rect width="680" height="850" filter="url(#paper-grain)" opacity=".12"/>
+  </g>
+</svg>

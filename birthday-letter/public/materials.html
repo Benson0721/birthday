@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#EDE2F1" />
+  <title>生日文具素材</title>
+  <style>
+    :root { color: #6e5651; background: #ede2f1; font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif; font-synthesis: none; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: radial-gradient(ellipse at 50% 0, #fff9f2 0, transparent 65%), #ede2f1; }
+    main { width: min(1100px, calc(100% - 48px)); margin: auto; padding: 38px 0 42px; }
+    a { color: inherit; text-underline-offset: 4px; }
+    button, .download { min-height: 44px; font: inherit; cursor: pointer; }
+    :focus-visible { outline: 3px solid #805c6e; outline-offset: 4px; }
+    .back { display: inline-flex; align-items: center; min-height: 44px; font-size: 13px; text-decoration: none; color: #826d78; }
+    .intro { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin: 20px 0 30px; }
+    h1, h2 { font-family: 'Noto Serif TC', 'PMingLiU', Georgia, serif; font-weight: 500; }
+    h1 { margin: 0 0 13px; font-size: clamp(30px, 4vw, 42px); letter-spacing: .08em; }
+    .intro p { margin: 0; color: #826d78; font-size: 14px; line-height: 1.8; }
+    .all { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; min-height: 44px; padding: 11px 20px; background: #805c6e; color: #fff9f2; border: 1px solid #805c6e; border-radius: 7px; text-decoration: none; font-size: 14px; }
+    fieldset { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; padding: 0; border: 0; margin: 0 0 25px; }
+    legend { float: left; padding: 12px 8px 12px 0; margin-right: 8px; font-size: 13px; color: #826d78; }
+    .tone { border: 1px solid #cfc5d6; padding: 9px 15px; border-radius: 6px; color: #6e5651; background: #fff9f273; font-size: 13px; }
+    .tone[aria-pressed='true'] { border-color: #97758c; background: #fff9f2; box-shadow: inset 0 -2px #d8b2c1; }
+    .collection { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+    .asset { overflow: hidden; background: #fff9f2; border: 1px solid #d8ccdf; border-radius: 7px; box-shadow: 0 6px 20px #68517709; }
+    .preview { aspect-ratio: 1.2; display: grid; place-items: center; padding: 24px; background: #fff9f2; }
+    .preview img { width: 100%; height: 100%; object-fit: contain; min-width: 0; min-height: 0; display: block; }
+    body[data-tone='lavender'] .preview { background: #ede2f1; }
+    body[data-tone='checker'] .preview { background: conic-gradient(#e8e2ea 25%, #fff9f2 0 50%, #e8e2ea 0 75%, #fff9f2 0) 0 / 20px 20px; }
+    .meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 18px; border-top: 1px solid #eee5ed; }
+    h2 { margin: 0 0 5px; font-size: 20px; letter-spacing: .03em; }
+    .meta p { font-size: 11px; color: #826d78; margin: 0; }
+    .download { display: inline-flex; align-items: center; flex-shrink: 0; padding: 8px 4px; font-size: 13px; }
+    footer { margin-top: 28px; color: #826d78; font-size: 12px; line-height: 1.9; }
+    footer p { margin: 5px 0; }
+    @media (max-width: 650px) {
+      main { width: calc(100% - 30px); padding-top: 20px; }
+      .intro { flex-direction: column; align-items: start; gap: 17px; margin-top: 14px; }
+      .collection { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .preview { aspect-ratio: 1; padding: 14px; }
+      .meta { padding: 10px 12px; display: block; }
+      h2 { font-size: 18px; }
+      .download { min-height: 44px; margin-top: 5px; }
+      legend { width: 100%; padding: 0 0 5px; }
+    }
+    @media print { .back, fieldset, .all, .download { display: none; } body { background: white; } main { width: 100%; padding: 0; } .asset { break-inside: avoid; box-shadow: none; } }
+  </style>
+</head>
+<body data-tone="cream">
+  <main>
+    <a class="back" href="./">← 回到生日信</a>
+    <header class="intro">
+      <div><h1>生日文具素材</h1><p>柔和水彩、鉛筆線條，六張可以獨立使用的小插圖。</p></div>
+      <a class="all" href="artwork/birthday-materials.zip" download>下載整組素材</a>
+    </header>
+    <fieldset><legend>預覽底色</legend><button class="tone" type="button" data-tone="cream" aria-pressed="true">奶油白</button><button class="tone" type="button" data-tone="lavender" aria-pressed="false">淡紫色</button><button class="tone" type="button" data-tone="checker" aria-pressed="false">透明底格</button></fieldset>
+    <section class="collection" aria-label="六張透明素材">
+      <article class="asset"><div class="preview"><img src="artwork/birthday-collection/lavender.png" width="1254" height="1254" alt="綁著緞帶的淡紫薰衣草花束" /></div><div class="meta"><div><h2>薰衣草</h2><p>1254 × 1254 · 透明 PNG</p></div><a class="download" href="artwork/birthday-collection/lavender.png" download>下載 PNG</a></div></article>
+      <article class="asset"><div class="preview"><img src="artwork/birthday-collection/happy-duck.png" width="1254" height="1254" alt="大眼睛、愛心舌頭、開心張開翅膀的鴨子" /></div><div class="meta"><div><h2>開心鴨子</h2><p>1254 × 1254 · 透明 PNG</p></div><a class="download" href="artwork/birthday-collection/happy-duck.png" download>下載 PNG</a></div></article>
+      <article class="asset"><div class="preview"><img src="artwork/birthday-collection/frog.png" width="1254" height="1254" alt="坐著微笑的鼠尾草綠小青蛙" /></div><div class="meta"><div><h2>青蛙</h2><p>1254 × 1254 · 透明 PNG</p></div><a class="download" href="artwork/birthday-collection/frog.png" download>下載 PNG</a></div></article>
+      <article class="asset"><div class="preview"><img src="artwork/birthday-collection/spicy-shrimp.png" width="1254" height="1254" alt="奶油色小盤中的三隻麻辣蝦子" /></div><div class="meta"><div><h2>麻辣蝦子</h2><p>1254 × 1254 · 透明 PNG</p></div><a class="download" href="artwork/birthday-collection/spicy-shrimp.png" download>下載 PNG</a></div></article>
+      <article class="asset"><div class="preview"><img src="artwork/birthday-collection/chocolate-cake.png" width="1254" height="1254" alt="插著淡紫蠟燭的巧克力蛋糕切片" /></div><div class="meta"><div><h2>巧克力蛋糕</h2><p>1254 × 1254 · 透明 PNG</p></div><a class="download" href="artwork/birthday-collection/chocolate-cake.png" download>下載 PNG</a></div></article>
+      <article class="asset"><div class="preview"><img src="artwork/birthday-collection/steam-emblem.png" width="1254" height="1254" alt="淡紫水彩質感的 Steam 機械連桿圖示" /></div><div class="meta"><div><h2>Steam 圖示</h2><p>1254 × 1254 · 透明 PNG</p></div><a class="download" href="artwork/birthday-collection/steam-emblem.png" download>下載 PNG</a></div></article>
+    </section>
+    <footer><p>下載檔保留透明背景與原始尺寸。<a href="artwork/birthday-collection/prompts.md" download>生成提示詞</a> · <a href="artwork/birthday-collection/manifest.json" download>素材清單</a></p><p>Steam 圖示為風格化版本；Steam 及其標誌屬 Valve。<a href="https://partner.steamgames.com/doc/marketing/branding?l=english" target="_blank" rel="noreferrer">Steam 標誌來源</a></p></footer>
+  </main>
+  <script>
+    const tones = [...document.querySelectorAll('.tone')];
+    for (const button of tones) button.addEventListener('click', () => {
+      document.body.dataset.tone = button.dataset.tone;
+      for (const item of tones) item.setAttribute('aria-pressed', String(item === button));
+    });
+  </script>
+</body>
+</html>

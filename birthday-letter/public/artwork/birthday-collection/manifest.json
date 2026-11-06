@@ -1,0 +1,58 @@
+{
+  "createdAt": "2026-11-05",
+  "generator": "Built-in image_gen",
+  "format": "RGBA PNG",
+  "style": "柔霧水彩與可可色鉛筆線條",
+  "assets": [
+    {
+      "id": "lavender",
+      "label": "薰衣草",
+      "file": "lavender.png",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "happy-duck",
+      "label": "開心鴨子",
+      "file": "happy-duck.png",
+      "width": 1254,
+      "height": 1254,
+      "reference": "User-provided duck drawing photo",
+      "revision": "Flat pink blush; lower-right shape corrected to a raised webbed foot"
+    },
+    {
+      "id": "frog",
+      "label": "青蛙",
+      "file": "frog.png",
+      "width": 1254,
+      "height": 1254,
+      "reference": "Frog in the user-provided drawing photo",
+      "revision": "Based on the original frog: original closed eyes, eyelids, outlined blush and pose preserved; only the mouth changed to a small gentle smile"
+    },
+    {
+      "id": "spicy-shrimp",
+      "label": "麻辣蝦子",
+      "file": "spicy-shrimp.png",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "chocolate-cake",
+      "label": "巧克力蛋糕",
+      "file": "chocolate-cake.png",
+      "width": 1254,
+      "height": 1254,
+      "revision": "Smooth chocolate layers, no pits, crumbs or grain"
+    },
+    {
+      "id": "steam-emblem",
+      "label": "Steam 圖示",
+      "file": "steam-emblem.png",
+      "width": 1254,
+      "height": 1254,
+      "reference": "https://store.steampowered.com/public/shared/images/header/logo_steam.svg",
+      "attribution": "Steam and the Steam logo are trademarks of Valve Corporation; this is a generated stylized variant."
+    }
+  ],
+  "updatedAt": "2026-11-05"
+}
