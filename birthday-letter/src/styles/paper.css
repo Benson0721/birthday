@@ -78,7 +78,7 @@
 .letter-heading { position: relative; flex-shrink: 0; }
 .letter-duck { position: absolute; right: 0; top: -12px; width: 118px; height: 118px; }
 .stationery-caption { margin: 0 0 16px; color: var(--color-muted); font-size: 13px; letter-spacing: .08em; }
-.letter-heading h1 { margin: 0 112px 14px 0; font-size: clamp(28px, 3vw, 36px); font-weight: 500; line-height: 1.5; letter-spacing: .04em; outline: none; }
+.letter-heading h1 { margin: 0 112px 14px 0; font-size: clamp(28px, 3vw, 32px); font-weight: 500; line-height: 1.5; letter-spacing: .04em; outline: none; }
 .letter-rule { display: flex; gap: 12px; align-items: center; margin-bottom: 16px; color: var(--color-accent-deep); font-size: 16px; }
 .letter-rule::before { content: ''; width: 46px; height: 1px; background: var(--color-paper-edge); }
 .letter-rule::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, var(--color-paper-edge), transparent); }
