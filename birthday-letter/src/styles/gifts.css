@@ -71,7 +71,6 @@
 .gift-art-halo { width: 80%; aspect-ratio: 1; position: absolute; border-radius: 50%; background: #e3d7ed; }
 .gift-overlay--thai .gift-art-halo { background: #eaddcb; }
 .gift-overlay--mystery .gift-art-halo { background: #ead3dd; }
-.gift-detail-moon { position: absolute; width: 90px; height: 90px; right: -2px; bottom: 0; transform: rotate(15deg); }
 .gift-detail-label { color: var(--color-muted); font-size: 14px; margin: 0 0 18px; letter-spacing: .08em; }
 .gift-detail-copy h2 { font-size: clamp(29px, 4vw, 42px); line-height: 1.55; font-weight: 500; letter-spacing: .03em; margin: 0 0 28px; text-wrap: balance; }
 .gift-detail-paragraphs p { font-size: 17px; line-height: 1.95; margin: 0 0 18px; overflow-wrap: anywhere; white-space: pre-line; }
@@ -104,7 +103,6 @@
   .gift-treat h3 { font-size: 20px; }
   .gift-treat p { font-size: 13px; }
   .gift-treat time { font-size: 17px; }
-  .gift-detail-moon { width: 62px; height: 62px; right: -10px; bottom: -8px; }
   .gift-detail-copy h2 { font-size: 29px; margin-bottom: 22px; }
   .gift-detail-label { margin-bottom: 12px; }
   .gift-detail-paragraphs p { font-size: 16px; }
