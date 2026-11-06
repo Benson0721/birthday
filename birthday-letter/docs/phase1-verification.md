@@ -166,6 +166,6 @@ Chromium 原生觸控測試涵蓋文字上左右滑動、垂直捲動、翻面�
 
 
 - 生日信與署名已由送禮者編輯；神祕禮物仍為原預告日期，上線前可於內容設定確認。
-- 未發布到 Cloudflare Pages 或建立遠端儲存庫。`dist/` 已可部署，帳戶端步驟見 README；遠端實際網址的最終驗收尚未執行。
+- 已建立 `Benson0721/birthday` 遠端儲存庫。GitHub Pages 使用自訂 Action，從 `birthday-letter` 建置與發布 `dist`；本機 `/birthday/` 子路徑已通過桌面 Chromium、手機 Chromium 與 WebKit 的開信、翻面、三份禮物、收信及六張素材／ZIP 下載驗證。正式部署狀態見 [GitHub Actions](https://github.com/Benson0721/birthday/actions)。Cloudflare Pages 尚未發布。
 - WebKit 模擬已測試，但尚未在實體 iPhone／Safari 驗證動態工具列與安全區。
 - 手機觸控滑動翻面與桌面整張紙的滑鼠拖曳已完成；完整共享元素轉場與寵物屬後續。Phase 2 可從主場景外側新增 PetLayer，不需要修改現有信紙與禮物事件契約。

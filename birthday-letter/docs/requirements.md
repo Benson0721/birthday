@@ -72,7 +72,7 @@
 - 拖曳的姿態由局部控制器管理，使用 Pointer Capture 與 requestAnimationFrame 更新 transform；放手後才提交正反面的語意狀態，避免每幀 React 更新與中途改寫拆封紀錄。
 - 詳情開啟時加入一筆 history state，返回鍵會關閉詳情。
 - 拆封紀錄預設只存本次頁面記憶體；重新整理可重新開信。無需 localStorage、環境密鑰或 API 憑證。
-- 產物為 `dist/`，按原規格優先部署 Cloudflare Pages。本次僅備妥設定與說明，尚未建立遠端專案或部署。
+- 產物為 `dist/`。依使用者後續指示，GitHub Pages 改由根目錄的 `.github/workflows/deploy-pages.yml` 從 `birthday-letter` 建置並發布 `birthday-letter/dist`；Cloudflare Pages 的子目錄部署設定亦保留於 README。
 
 ## 上游參考檢視
 

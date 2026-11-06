@@ -139,19 +139,41 @@ Noto Sans TC／Noto Serif TC 已自託管，隨 Vite 靜態產物發布，依 Un
 - `src/app/motion.ts` 是動畫時間唯一來源，App 與 Portal 共用其 CSS 變數；調整動畫請修改該檔。
 - 手機水平觸控與垂直原生捲動依手勢方向區分；桌面滑鼠拖曳不受紙張邊緣限制。
 
+## GitHub Pages 自動部署
+
+整體儲存庫保留規格書與 `birthday-letter` 子目錄，透過 [`.github/workflows/deploy-pages.yml`](../.github/workflows/deploy-pages.yml) 部署。推送至 `main` 或手動執行 Action 後，工作流程會：
+
+1. 依 `birthday-letter/.node-version` 安裝 Node.js，快取子目錄的 npm 依賴。
+2. 在 `birthday-letter` 執行 `npm ci`、lint、單元測試與建置。
+3. 依 Pages 提供的 base path 建置；目前網站使用 `/birthday/`，圖片、字型、CSS 及 JavaScript 均對應此網址前綴。
+4. 上傳 `birthday-letter/dist` 並部署至 GitHub Pages。
+
+網站：<https://benson0721.github.io/birthday/>。儲存庫的 Settings → Pages → Source 使用 **GitHub Actions**，不直接發布 Git 原始碼根目錄。
+
+在本機模擬相同子路徑：
+
+```powershell
+npm run build -- --base /birthday/
+npm run preview -- --base /birthday/
+```
+
+開啟 <http://127.0.0.1:4173/birthday/>。一般本機開發與 `npm run build` 保持使用根路徑，亦可部署到 Cloudflare Pages。
+
+官方參考：[Vite 的 GitHub Pages 部署](https://vite.dev/guide/static-deploy.html#github-pages)、[GitHub Pages 自訂工作流程](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。
+
 ## Cloudflare Pages 靜態部署
 
-已產生可發布的 `dist/`；尚未連線 Cloudflare 帳戶、建立遠端儲存庫或發布網站。可採 Git 整合或直接上傳建置後的 `dist/`。
+若改用 Cloudflare Pages，可連接同一個 GitHub 儲存庫並使用以下設定，或直接上傳建置後的 `dist/`。GitHub Pages 的 Action 不需要改動。
 
 Git 整合設定：
 
 | 設定 | 值 |
 | --- | --- |
-| Root directory | 若儲存整個「瓜生」目錄，設 `birthday-letter`；若只存本專案則留白 |
+| Root directory | `birthday-letter` |
 | Build command | `npm run build` |
 | Output directory | `dist` |
 | Node version | `24.16.0`（`.node-version`；必要時設定 `NODE_VERSION`） |
-| Production branch | 選擇實際使用的正式分支 |
+| Production branch | `main` |
 
 官方步驟：[React on Cloudflare Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-a-react-site/)。上傳產物前先執行 `npm run check`，並在上線後實測完整開信、翻面與禮物流程。
 

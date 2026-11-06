@@ -15,3 +15,5 @@ npm run dev
 ```
 
 本機開發網址為 `http://127.0.0.1:5173/`。建置指令為 `npm run build`，產物位於 `birthday-letter/dist/`。
+
+GitHub Pages 使用 [部署 Action](.github/workflows/deploy-pages.yml)，從 `birthday-letter` 安裝、檢查及建置，再發布 `birthday-letter/dist`。推送至 `main` 即自動部署，網站網址為 <https://benson0721.github.io/birthday/>。不需更動儲存庫的目錄結構；Vite 的網址前綴由部署時取得的 Pages 設定傳入。

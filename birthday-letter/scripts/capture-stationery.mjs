@@ -50,7 +50,7 @@ for (const [engine, viewport, name] of [
 
     const assets = await page.evaluate(async () => Promise.all(['birthday-collection/happy-duck', 'puppy-kitten'].map(async name => {
       const image = new Image()
-      image.src = `/artwork/${name}.png`
+      image.src = new URL(`artwork/${name}.png`, location.href).href
       await image.decode()
       const canvas = document.createElement('canvas')
       canvas.width = image.naturalWidth
