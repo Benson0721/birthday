@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { canOpenGift, gifts, type GiftId } from '../content/gifts'
 import { FlippablePaper } from '../components/FlippablePaper'
 import { GiftDetailOverlay } from '../components/GiftDetailOverlay'
@@ -12,7 +12,9 @@ export default function App() {
   const giftTrigger = useRef<HTMLButtonElement | null>(null)
   const smallCard = useRef<HTMLSpanElement>(null)
   const envelopeTrigger = useRef<HTMLButtonElement>(null)
+  const [controlsHost, setControlsHost] = useState<HTMLDivElement | null>(null)
   const previousPhase = useRef(state.envelopePhase)
+  const previousGift = useRef(state.activeGift)
   const onExpanded = useCallback(() => dispatch({ type: 'PAPER_EXPANDED' }), [dispatch])
   const onReturned = useCallback(() => dispatch({ type: 'PAPER_RETURNED' }), [dispatch])
   const activeGift = gifts.find((gift) => gift.id === state.activeGift)
@@ -28,6 +30,11 @@ export default function App() {
     if (state.envelopePhase === 'floating' && previousPhase.current !== 'floating') envelopeTrigger.current?.focus({ preventScroll: true })
     previousPhase.current = state.envelopePhase
   }, [state.envelopePhase])
+
+  useLayoutEffect(() => {
+    if (previousGift.current && !state.activeGift) giftTrigger.current?.focus({ preventScroll: true })
+    previousGift.current = state.activeGift
+  }, [state.activeGift])
 
   function openGift(id: GiftId, trigger: HTMLButtonElement) {
     if (state.envelopePhase !== 'expanded' || state.paperSide !== 'back' || state.isPaperFlipping || state.activeGift || !canOpenGift(id, state.openedGiftIds)) return
@@ -46,13 +53,14 @@ export default function App() {
     <>
       <main className="letter-app" data-phase={state.envelopePhase} data-side={state.paperSide}
         data-flipping={state.isPaperFlipping} style={motionStyles} inert={Boolean(state.activeGift)} aria-label="生日信與三份小幸福">
+        <div className="page-controls" ref={setControlsHost} />
         {state.envelopePhase !== 'expanded' && <EnvelopeScene phase={state.envelopePhase} cardRef={smallCard} triggerRef={envelopeTrigger}
           onOpen={() => dispatch({ type: 'OPEN_ENVELOPE', instant: reducedMotion })}
           onFlapOpened={() => dispatch({ type: 'ENVELOPE_OPENED' })} onCardExtracted={() => dispatch({ type: 'CARD_EXTRACTED' })}
           onCardInserted={() => dispatch({ type: 'CARD_INSERTED' })} onFlapClosed={() => dispatch({ type: 'ENVELOPE_CLOSED' })} />}
         {(state.envelopePhase === 'expanding' || state.envelopePhase === 'expanded' || state.envelopePhase === 'returning') &&
           <div className="reading-stage"><ExpandingCard phase={state.envelopePhase} sourceRef={smallCard} onExpanded={onExpanded} onReturned={onReturned}>
-            <FlippablePaper state={state} reducedMotion={reducedMotion} onFlip={() => dispatch({ type: 'FLIP_PAPER', instant: reducedMotion })}
+            <FlippablePaper state={state} controlsHost={controlsHost} reducedMotion={reducedMotion} onFlip={() => dispatch({ type: 'FLIP_PAPER', instant: reducedMotion })}
               onFlipFinished={() => dispatch({ type: 'FLIP_FINISHED' })} onOpenGift={openGift}
               onReturn={() => dispatch({ type: 'RETURN_TO_ENVELOPE', instant: reducedMotion })} />
           </ExpandingCard></div>}

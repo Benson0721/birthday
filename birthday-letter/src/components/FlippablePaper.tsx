@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import type { AppState } from '../app/letterFlow'
 import type { GiftId } from '../content/gifts'
 import { usePaperDrag } from '../app/usePaperDrag'
@@ -9,6 +10,7 @@ import { LetterFront } from './LetterFront'
 
 type Props = {
   state: AppState
+  controlsHost: HTMLElement | null
   onFlip: () => void
   onFlipFinished: () => void
   onOpenGift: (id: GiftId, trigger: HTMLButtonElement) => void
@@ -18,10 +20,10 @@ type Props = {
 
 function ReturnButton({ onReturn, disabled }: { onReturn: () => void; disabled: boolean }) {
   const interaction = useTouchButton(onReturn)
-  return <button type="button" className="paper-return-button" aria-label="收回信封" title="收回信封" disabled={disabled} {...interaction}><ReturnEnvelopeIcon /></button>
+  return <button type="button" className="page-return-button" aria-label="收回信封" title="收回信封" disabled={disabled} {...interaction}><ReturnEnvelopeIcon /></button>
 }
 
-export function FlippablePaper({ state, onFlip, onFlipFinished, onOpenGift, onReturn, reducedMotion }: Props) {
+export function FlippablePaper({ state, controlsHost, onFlip, onFlipFinished, onOpenGift, onReturn, reducedMotion }: Props) {
   const scene = useRef<HTMLElement>(null)
   const flipper = useRef<HTMLDivElement>(null)
   const cullingFrame = useRef<number | null>(null)
@@ -70,7 +72,7 @@ export function FlippablePaper({ state, onFlip, onFlipFinished, onOpenGift, onRe
     previousSide.current = state.paperSide
   }, [ready, state.activeGift, state.isPaperFlipping, state.paperSide, drag.isDragging, drag.isSettling])
 
-  return (
+  const paper = (
     // The draggable region contains independent buttons and supports arrow keys.
     // oxlint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
     <section className="paper-scene" ref={scene} tabIndex={0} aria-label="生日信紙" aria-describedby="paper-instructions"
@@ -89,15 +91,22 @@ export function FlippablePaper({ state, onFlip, onFlipFinished, onOpenGift, onRe
         }}>
         <section className="paper-face paper-front" data-face="front" aria-labelledby="letter-title"
           aria-hidden={state.paperSide !== 'front' || !ready} inert={blocked || state.paperSide !== 'front'}>
-          <ReturnButton onReturn={onReturn} disabled={blocked} />
           <LetterFront />
         </section>
         <section className="paper-face paper-back" data-face="back" aria-labelledby="gifts-title"
           aria-hidden={state.paperSide !== 'back' || !ready} inert={blocked || state.paperSide !== 'back'}>
-          <ReturnButton onReturn={onReturn} disabled={blocked} />
           <GiftBack openedGiftIds={state.openedGiftIds} onOpenGift={(id, trigger) => { if (!blocked) onOpenGift(id, trigger) }} />
         </section>
       </div>
     </section>
+  )
+
+  // Keep the return control outside every paper transform while the same drag
+  // state still guards it during gestures and settling.
+  return (
+    <>
+      {ready && !state.activeGift && controlsHost && createPortal(<ReturnButton onReturn={onReturn} disabled={blocked} />, controlsHost)}
+      {paper}
+    </>
   )
 }

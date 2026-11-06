@@ -89,16 +89,12 @@
 .letter-signature { margin: 0 0 10px 450px; font-family: var(--font-heading); font-size: 17px; }
 .letter-endmark { display: block; width: 40px; height: 40px; margin: 10px 18px 0 auto; opacity: .8; }
 
-.paper-return-button { position: absolute; z-index: 2; top: 8px; left: 8px; width: 44px; height: 44px; display: grid; place-items: center; padding: 0; border: 0; border-radius: 50%; background: radial-gradient(circle 16px, #fff9f2db 98%, transparent 100%); color: var(--color-text); }
-@media (hover: hover) { .paper-return-button:hover { background: radial-gradient(circle 18px, #fff9f2 98%, transparent 100%); } }
-.paper-return-button:focus-visible { outline-offset: 1px; }
-.return-envelope-icon { width: 20px; height: 20px; }
-
 @media (min-width: 768px) and (max-width: 1023px) {
   :root { --paper-width: min(90vw, 680px); --paper-height: min(86dvh, 820px); }
 }
 @media (max-width: 767px) {
-  :root { --paper-width: calc(100vw - 24px); --paper-height: calc(100dvh - 32px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); }
+  :root { --paper-width: calc(100vw - 24px); --paper-height: calc(100dvh - 88px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); }
+  .reading-stage { padding-top: calc(64px + env(safe-area-inset-top)); padding-bottom: calc(16px + env(safe-area-inset-bottom)); }
   .paper-face { padding: 58px 32px 32px; }
   .letter-duck { width: 90px; height: 94px; right: 0; top: -8px; }
   .stationery-caption { max-width: calc(100% - 85px); font-size: 11px; letter-spacing: .02em; margin-bottom: 16px; }
@@ -106,7 +102,7 @@
   .letter-paragraphs p { font-size: 16px; line-height: 1.95; }
   .letter-closing { min-height: 90px; }
   .letter-friends { width: 124px; height: 75px; }
-  .letter-signature { margin-left: 128px; font-size: 15px; }
+  .letter-signature { margin-top:72px ; margin-left: 128px; font-size: 15px; }
   .letter-endmark { width: 34px; height: 34px; margin-right: 12px; }
 }
 @media (max-height: 620px) {

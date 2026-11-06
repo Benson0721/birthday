@@ -12,7 +12,7 @@ function GiftButton({ gift, opened, locked, step, onOpenGift }: { gift: Gift; op
   return <button type="button" className="gift-row" data-gift={gift.id} data-opened={opened} disabled={locked}
     aria-label={`${gift.label}，${locked ? `請先拆完${gifts[step - 2]?.label}` : opened ? '再看一次' : '點擊拆開'}`} aria-haspopup="dialog" {...interaction}>
     <span className="gift-step" aria-hidden="true" data-step={opened ? '✓' : step} />
-    <GiftArtwork kind={gift.id} />
+    <GiftArtwork kind={gift.id} opened={opened} />
     {locked && <svg className="gift-lock" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="4.5" y="8.5" width="11" height="8" rx="2" /><path d="M7 8V5.5a3 3 0 0 1 6 0V8m-3 4v1.5" /></svg>}
   </button>
 }

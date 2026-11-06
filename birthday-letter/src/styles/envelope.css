@@ -16,10 +16,12 @@
 .envelope-bottom-fold { position: absolute; inset: 0; z-index: 5; background: linear-gradient(180deg, #e9ddf0 30%, var(--color-envelope)); clip-path: polygon(0 100%, 50% 50%, 100% 100%); border-radius: 5px; }
 .envelope-seams { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 5; color: #b6a0c7; opacity: .45; }
 .envelope-address { position: absolute; z-index: 6; left: 55%; bottom: 16%; transform: translateX(-50%); font-family: var(--font-heading); font-size: 17px; letter-spacing: .08em; white-space: nowrap; color: var(--color-text); }
-.envelope-assembly .envelope-lavender { position: absolute; z-index: 6; width: 144px; height: 144px; left: 3px; bottom: 3px; object-position: left bottom; pointer-events: none; user-select: none; }
+.envelope-lavender-frame { position: absolute; z-index: 8; inset: 0; width: 100%; height: 100%; pointer-events: none; user-select: none; }
+.envelope-frame-top { opacity: 1; transition: opacity var(--motion-reveal); }
+.envelope-stage:not([data-phase='floating']) .envelope-frame-top { opacity: 0; transition: none; }
 .envelope-stars { position: absolute; z-index: 6; width: 52px; height: 52px; bottom: 30px; right: 20px; opacity: .7; }
 .envelope-flap { position: absolute; top: 0; left: 0; width: 100%; height: 58%; z-index: 7; background: linear-gradient(180deg, #e8dff1, #cbb7e2); clip-path: polygon(0 0, 100% 0, 50% 100%); transform-origin: top center; }
-.envelope-seal { position: absolute; z-index: 8; top: 49%; left: 50%; transform: translate(-50%, -50%) rotate(-8deg); display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: var(--color-paper); border: 1px solid #c9b6d8; box-shadow: 0 3px 5px #8b72941a; transition: opacity var(--motion-reveal); }
+.envelope-seal { position: absolute; z-index: 9; top: 49%; left: 50%; transform: translate(-50%, -50%) rotate(-8deg); display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: var(--color-paper); border: 1px solid #c9b6d8; box-shadow: 0 3px 5px #8b72941a; transition: opacity var(--motion-reveal); }
 .envelope-seal::before { content: ''; position: absolute; inset: 4px; border: 1px dashed #cfc5d6; border-radius: inherit; opacity: .8; }
 .envelope-seal > .stationery-motif { width: 48px; height: 48px; }
 .envelope-shadow { position: absolute; left: 10%; right: 10%; bottom: -38px; height: 24px; border-radius: 50%; background: #775f7920; filter: blur(12px); }
@@ -67,7 +69,6 @@
   .envelope-seal { width: 47px; height: 47px; }
   .envelope-seal > .stationery-motif { width: 40px; height: 40px; }
   .envelope-address { font-size: 14px; bottom: 18%; }
-  .envelope-assembly .envelope-lavender { width: 108px; height: 108px; left: 0; bottom: 2px; }
   .envelope-stars { width: 35px; height: 35px; right: 9px; bottom: 20px; }
   .envelope-invitation p { font-size: 14px; }
   .card-greeting { font-size: 17px; }
@@ -81,5 +82,5 @@
 @media (prefers-reduced-motion: reduce) {
   .envelope-float, .envelope-stage, .envelope-scene, .envelope-flap, .envelope-card,
   .paper-arrival[data-expanding='true'] .paper-face > * { animation: none !important; }
-  .envelope-seal { transition: none; }
+  .envelope-seal, .envelope-frame-top { transition: none; }
 }

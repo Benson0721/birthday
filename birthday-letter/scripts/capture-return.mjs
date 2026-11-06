@@ -22,6 +22,9 @@ for (const [engine, viewport, name] of [
     if (!bounds || bounds.x < -1 || bounds.x + bounds.width > viewport.width + 1) throw new Error(`Envelope exceeds viewport: ${name}`)
     await page.screenshot({ path: fileURLToPath(new URL(`envelope-${name}.png`, output)), scale: 'css' })
     await page.locator('.envelope-trigger').click()
+    await page.waitForFunction(() => document.querySelector('main')?.dataset.phase === 'extracting')
+    if (await page.locator('.envelope-frame-top').evaluate(element => getComputedStyle(element).opacity) !== '0') throw new Error('Top floral border is visible while the envelope is open')
+    await page.screenshot({ path: fileURLToPath(new URL(`envelope-open-${name}.png`, output)), scale: 'css' })
     await page.waitForFunction(() => document.querySelector('main')?.dataset.phase === 'expanded')
     await page.evaluate(async () => { await document.fonts.ready; await Promise.all([...document.images].map(image => image.decode())) })
     if (name === 'desktop') {
@@ -31,7 +34,7 @@ for (const [engine, viewport, name] of [
     }
     const face = name === 'desktop' ? 'back' : 'front'
     await page.screenshot({ path: fileURLToPath(new URL(`return-control-${name}.png`, output)), scale: 'css' })
-    await page.locator(`.paper-${face} .paper-return-button`).click()
+    await page.locator('.page-return-button').click()
 
     for (const [phase, selector, fraction] of [
       ['returning', '.paper-arrival', .42],
@@ -39,6 +42,7 @@ for (const [engine, viewport, name] of [
       ['closing', '.envelope-flap', .52],
     ]) {
       await page.waitForFunction(phase => document.querySelector('main')?.dataset.phase === phase, phase)
+      if (await page.locator('.envelope-frame-top').evaluate(element => getComputedStyle(element).opacity) !== '0') throw new Error(`Top floral border is visible while ${phase}`)
       const animation = page.locator(selector)
       await animation.evaluate((element, fraction) => {
         for (const animation of element.getAnimations()) {
@@ -59,7 +63,7 @@ for (const [engine, viewport, name] of [
       await animation.evaluate(element => { for (const animation of element.getAnimations()) animation.finish() })
     }
     await page.waitForFunction(() => document.querySelector('main')?.dataset.phase === 'floating')
-    await page.waitForFunction(() => getComputedStyle(document.querySelector('.envelope-intro')).opacity === '1' && getComputedStyle(document.querySelector('.envelope-seal')).opacity === '1')
+    await page.waitForFunction(() => getComputedStyle(document.querySelector('.envelope-intro')).opacity === '1' && getComputedStyle(document.querySelector('.envelope-seal')).opacity === '1' && getComputedStyle(document.querySelector('.envelope-frame-top')).opacity === '1')
     await page.screenshot({ path: fileURLToPath(new URL(`return-closed-${name}.png`, output)), scale: 'css' })
     evidence.push({ name, viewport, returnedFrom: face, errors, phase: await page.locator('main').getAttribute('data-phase') })
     if (errors.length) throw new Error(JSON.stringify(errors))

@@ -1,6 +1,6 @@
 import type { RefObject } from 'react'
 import type { EnvelopePhase } from '../app/letterFlow'
-import { BirthdayArtwork, MoonStars, StationeryAnimal } from './Artwork'
+import { LavenderEnvelopeFrame, MoonStars, StationeryAnimal } from './Artwork'
 
 type Props = {
   phase: EnvelopePhase
@@ -26,11 +26,11 @@ export function EnvelopeScene({ phase, cardRef, triggerRef, onOpen, onFlapOpened
               <span className="envelope-card" ref={cardRef} onAnimationEnd={(event) => {
                 if (event.target === event.currentTarget && event.animationName === 'card-extract') onCardExtracted()
                 if (event.target === event.currentTarget && event.animationName === 'card-insert') onCardInserted()
-              }}><StationeryAnimal kind="duck" className="card-duck" /><span className="card-greeting">估估嘎嘎</span></span>
+              }}><StationeryAnimal kind="duck" className="card-duck" /><span className="card-greeting">估估嘎嘎!!!</span></span>
               <span className="envelope-pocket" />
               <span className="envelope-bottom-fold" />
               <svg className="envelope-seams" viewBox="0 0 420 280" fill="none"><path d="M0 280 210 141 420 280" stroke="currentColor" strokeWidth="1" /></svg>
-              <BirthdayArtwork artwork={{ file: 'lavender.png', alt: '' }} className="envelope-lavender" />
+              <LavenderEnvelopeFrame />
              
               <span className="envelope-flap" onAnimationEnd={(event) => {
                 if (event.target === event.currentTarget && event.animationName === 'flap-open') onFlapOpened()

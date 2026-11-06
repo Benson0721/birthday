@@ -45,7 +45,7 @@ test('整張紙空白處可跟手旋轉、小幅回彈、左右拖曳翻面且�
   await expect.poll(() => page.locator('.paper-flipper').evaluate(element => parseFloat(element.style.getPropertyValue('--paper-angle')))).toBeLessThan(-90)
   await expect(page.getByRole('main')).toHaveAttribute('data-side', 'front')
   await expect(page.locator('.paper-back')).toHaveCSS('visibility', 'visible')
-  await expect(page.locator('.paper-front .paper-return-button')).toBeDisabled()
+  await expect(page.locator('.page-return-button')).toBeDisabled()
   await page.mouse.up()
   await settle(page, 'back')
   await expect(page.locator('.paper-front')).toHaveCSS('visibility', 'hidden')

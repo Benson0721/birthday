@@ -1,4 +1,4 @@
-import { useEffect, useRef, type RefObject } from 'react'
+import { useLayoutEffect, useRef, type RefObject } from 'react'
 import { createPortal } from 'react-dom'
 import { motionStyles } from '../app/motion'
 import type { Gift } from '../content/gifts'
@@ -18,7 +18,7 @@ export function GiftDetailOverlay({ gift, closing, onRequestClose, onClosed, ret
   const touch = useRef<{ id: number; x: number; y: number } | null>(null)
   const lastTouchClose = useRef(0)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const element = dialog.current
     if (!element) return
     const trigger = returnFocus.current
@@ -31,7 +31,6 @@ export function GiftDetailOverlay({ gift, closing, onRequestClose, onClosed, ret
     return () => {
       if (element.open) element.close()
       document.body.style.overflow = previousOverflow
-      trigger?.focus({ preventScroll: true })
       if (list && listScrollTop !== undefined) list.scrollTop = listScrollTop
     }
   }, [returnFocus])
@@ -92,7 +91,7 @@ export function GiftDetailOverlay({ gift, closing, onRequestClose, onClosed, ret
       <header className="gift-overlay-header"><button type="button" ref={backButton} onClick={onRequestClose} disabled={closing}><ArrowIcon back />返回三份禮物</button><span aria-hidden="true">♡</span></header>
       <section className="gift-detail-scroll" tabIndex={0} aria-label="禮物詳情內容">
         <article className={`gift-detail-content${gift.treats ? ' gift-detail-content--treats' : ''}`}>
-          {!gift.treats && <div className="gift-detail-art"><span className="gift-art-halo" />{gift.artwork ? <BirthdayArtwork artwork={gift.artwork} /> : <GiftArtwork kind={gift.id} />}<MoonStars className="gift-detail-moon" /></div>}
+          {!gift.treats && <div className="gift-detail-art"><span className="gift-art-halo" />{gift.artwork ? <BirthdayArtwork artwork={gift.artwork} /> : <GiftArtwork kind={gift.id} opened />}<MoonStars className="gift-detail-moon" /></div>}
           <div className="gift-detail-copy"><p className="gift-detail-label">{gift.label}</p><h2 id="gift-detail-title">{gift.detailTitle}</h2>
             {gift.announcementDate && <p className="gift-announcement"><time dateTime={gift.announcementDate}>{gift.announcementDate.replaceAll('-', ' / ')}</time><span>和妳見面</span></p>}
             <div className="gift-detail-paragraphs">{gift.paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div>

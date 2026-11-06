@@ -1,5 +1,5 @@
 import { letter } from '../content/letter'
-import { MoonStars, StationeryAnimal } from './Artwork'
+import { StationeryAnimal } from './Artwork'
 
 // A deliberately small safe subset: **emphasis** and literal newlines.
 function LetterParagraph({ text }: { text: string }) {
@@ -25,7 +25,6 @@ export function LetterFront() {
       <div className="letter-closing">
         <StationeryAnimal kind="friends" className="letter-friends" />
         <p className="letter-signature">{letter.signature}</p>
-        <MoonStars className="letter-endmark" />
       </div>
     </>
   )

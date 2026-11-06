@@ -102,6 +102,7 @@ for (const [engine, viewport, name] of [
       await capture(page, `${imageName}-${name}.png`)
       await page.locator('.gift-overlay-header button').click()
       await page.locator('dialog').waitFor({ state: 'detached' })
+      await capture(page, `gifts-after-${id}-${name}.png`)
     }
     evidence.push({ name, viewport, assets, errors })
     if (errors.length) throw new Error(JSON.stringify(errors))
