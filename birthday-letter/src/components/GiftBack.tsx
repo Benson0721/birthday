@@ -22,7 +22,7 @@ export function GiftBack({ openedGiftIds, onOpenGift }: Props) {
   return (
     <>
       <header className="gifts-heading">
-        <StationeryAnimal kind="friends" className="gifts-friends" />
+        <StationeryAnimal kind="expectant-duck" className="gifts-duck" />
         <h2 id="gifts-title">這全部都是妳的大禮物</h2>
         <p>要照順序開不要爆呱呱雷!</p>
         <p className="gift-order" aria-label="拆封順序"><span>吃得爽快</span><span aria-hidden="true">→</span><span>玩得開心</span><span aria-hidden="true">→</span><span>神祕小禮</span></p>

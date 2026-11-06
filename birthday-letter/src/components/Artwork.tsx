@@ -5,8 +5,15 @@ export function BirthdayArtwork({ artwork, className = '' }: { artwork: GiftImag
   return <img className={`birthday-artwork ${className}`} src={`${import.meta.env.BASE_URL}artwork/birthday-collection/${artwork.file}`} alt={artwork.alt} draggable={false} decoding="async" width={1254} height={1254} />
 }
 
-export function StationeryAnimal({ kind, className = '' }: { kind: 'duck' | 'friends'; className?: string }) {
-  return <img className={`stationery-animal ${className}`} src={`${import.meta.env.BASE_URL}artwork/${kind === 'duck' ? 'birthday-collection/happy-duck' : 'puppy-kitten'}.png`} alt="" aria-hidden="true" draggable={false} decoding="async" width={kind === 'duck' ? 1254 : 1752} height={kind === 'duck' ? 1254 : 897} />
+const stationeryAnimals = {
+  duck: { file: 'birthday-collection/happy-duck.png', width: 1254, height: 1254 },
+  friends: { file: 'puppy-kitten.png', width: 1752, height: 897 },
+  'expectant-duck': { file: 'expectant-duck-left.png', width: 1254, height: 1254 },
+} as const
+
+export function StationeryAnimal({ kind, className = '' }: { kind: keyof typeof stationeryAnimals; className?: string }) {
+  const artwork = stationeryAnimals[kind]
+  return <img className={`stationery-animal ${className}`} src={`${import.meta.env.BASE_URL}artwork/${artwork.file}`} alt="" aria-hidden="true" draggable={false} decoding="async" width={artwork.width} height={artwork.height} />
 }
 
 const envelopeFlowerTones = ['#d7bff0', '#c2a0e2', '#b28ad7']
