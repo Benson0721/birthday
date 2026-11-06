@@ -31,7 +31,7 @@ export function EnvelopeScene({ phase, cardRef, triggerRef, onOpen, onFlapOpened
               <span className="envelope-bottom-fold" />
               <svg className="envelope-seams" viewBox="0 0 420 280" fill="none"><path d="M0 280 210 141 420 280" stroke="currentColor" strokeWidth="1" /></svg>
               <BirthdayArtwork artwork={{ file: 'lavender.png', alt: '' }} className="envelope-lavender" />
-              <MoonStars className="envelope-stars" />
+             
               <span className="envelope-flap" onAnimationEnd={(event) => {
                 if (event.target === event.currentTarget && event.animationName === 'flap-open') onFlapOpened()
                 if (event.target === event.currentTarget && event.animationName === 'flap-close') onFlapClosed()
